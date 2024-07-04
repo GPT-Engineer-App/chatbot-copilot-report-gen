@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { UserPlus, HelpCircle } from "lucide-react"; // Import icons
 
 const Index = () => {
   const [messages, setMessages] = useState([]);
@@ -41,14 +42,26 @@ const Index = () => {
               </div>
             ))}
           </CardContent>
-          <div className="p-4 border-t flex items-center gap-2">
-            <Input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Type a message"
-              className="flex-1"
-            />
-            <Button onClick={handleSendMessage}>Send</Button>
+          <div className="p-4 border-t flex flex-col gap-2">
+            <div className="flex gap-2 mb-2">
+              <Button variant="outline" className="flex items-center gap-2">
+                <UserPlus className="h-4 w-4" />
+                Start New Client Interview
+              </Button>
+              <Button variant="outline" className="flex items-center gap-2">
+                <HelpCircle className="h-4 w-4" />
+                Ask General Questions
+              </Button>
+            </div>
+            <div className="flex items-center gap-2">
+              <Input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type a message"
+                className="flex-1"
+              />
+              <Button onClick={handleSendMessage}>Send</Button>
+            </div>
           </div>
         </Card>
       </div>
