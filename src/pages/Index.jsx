@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { UserPlus, HelpCircle, Edit, Download, Share } from "lucide-react"; // Import icons
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"; // Import Tooltip components
-import { Separator } from "@/components/ui/separator"; // Import Separator component
 
 const Index = () => {
   const [messages, setMessages] = useState([]);
@@ -94,45 +93,6 @@ const Index = () => {
             </div>
           </Card>
         </div>
-      </div>
-      <Separator className="my-8" />
-      <div className="space-y-8">
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
-          <p className="text-lg leading-relaxed">
-            Welcome to the ReportGen application. This tool is designed to help you generate comprehensive reports with ease. In this document, we will walk you through the various features and functionalities of the application.
-          </p>
-        </section>
-        <Separator className="my-8" />
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Features</h2>
-          <h3 className="text-xl font-semibold mb-2">1. Report Generation</h3>
-          <p className="text-lg leading-relaxed">
-            The core feature of ReportGen is its ability to generate detailed reports based on user input. You can customize the content, format, and layout of your reports to suit your specific needs.
-          </p>
-          <h3 className="text-xl font-semibold mb-2">2. Chatbot Assistance</h3>
-          <p className="text-lg leading-relaxed">
-            Our integrated chatbot, Copilot, is here to assist you with any questions or tasks you may have. Whether you need help with generating a report or have general inquiries, Copilot is ready to assist.
-          </p>
-          <h3 className="text-xl font-semibold mb-2">3. Editing and Customization</h3>
-          <p className="text-lg leading-relaxed">
-            You can easily edit and customize your reports using the built-in editor. Add sections, modify content, and adjust the layout to create a report that meets your requirements.
-          </p>
-        </section>
-        <Separator className="my-8" />
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Getting Started</h2>
-          <p className="text-lg leading-relaxed">
-            To get started with ReportGen, simply navigate to the home page and follow the on-screen instructions. You can start a new report, edit an existing one, or ask Copilot for assistance.
-          </p>
-        </section>
-        <Separator className="my-8" />
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Conclusion</h2>
-          <p className="text-lg leading-relaxed">
-            We hope you find ReportGen to be a valuable tool in your report generation process. If you have any feedback or need further assistance, please do not hesitate to reach out to our support team.
-          </p>
-        </section>
       </div>
     </TooltipProvider>
   );
