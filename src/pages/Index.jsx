@@ -29,7 +29,7 @@ const Index = () => {
           <iframe
             src="https://example.com/report"
             className="w-full h-full border rounded-md"
-            title="Report"
+            title="New Client Report"
           ></iframe>
           <div className="flex justify-center gap-4 mt-4">
             <Tooltip>
