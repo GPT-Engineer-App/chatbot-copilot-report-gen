@@ -22,15 +22,15 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 h-[80vh]">
-      <div className="flex-1 h-full">
+    <div className="flex flex-col md:flex-row gap-4 h-[80vh] md:gap-8">
+      <div className="flex-[2] h-full">
         <iframe
           src="https://example.com/report"
           className="w-full h-full border rounded-md"
           title="Report"
         ></iframe>
       </div>
-      <div className="flex-1 h-full">
+      <div className="flex-[1] h-full">
         <Card className="h-full flex flex-col">
           <CardHeader>
             <CardTitle>Chatbot Copilot</CardTitle>
