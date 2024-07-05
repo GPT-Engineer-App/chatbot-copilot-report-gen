@@ -110,7 +110,7 @@ const Index = () => {
           )}
           {file && (
             <div className="flex justify-center gap-4 mt-4">
-              <Button onClick={handleAnalyze} disabled={isAnalyzing}>
+              <Button onClick={handleAnalyze} disabled={isAnalyzing} className="btn-primary">
                 {isAnalyzing ? <Loader2 className="animate-spin h-5 w-5" /> : "Analyze"}
               </Button>
             </div>
@@ -130,11 +130,11 @@ const Index = () => {
             </CardContent>
             <div className="p-4 border-t flex flex-col gap-2">
               <div className="flex gap-2 mb-2">
-                <Button variant="outline" className="flex items-center gap-2">
+                <Button variant="outline" className="flex items-center gap-2 btn-primary">
                   <UserPlus className="h-4 w-4" />
                   Start New Client Interview
                 </Button>
-                <Button variant="outline" className="flex items-center gap-2">
+                <Button variant="outline" className="flex items-center gap-2 btn-primary">
                   <HelpCircle className="h-4 w-4" />
                   Ask General Questions
                 </Button>
@@ -146,7 +146,7 @@ const Index = () => {
                   placeholder="Type a message"
                   className="flex-1"
                 />
-                <Button onClick={handleSendMessage}>Send</Button>
+                <Button onClick={handleSendMessage} className="btn-primary">Send</Button>
               </div>
             </div>
           </Card>
