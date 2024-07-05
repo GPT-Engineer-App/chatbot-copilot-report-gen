@@ -37,7 +37,7 @@ const Sidebar = () => (
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
           <FileText className="h-6 w-6" />
-          <span className="hidden md:block group-hover:block">ReportGen</span>
+          <span className="hidden group-hover:block">ReportGen</span>
         </NavLink>
       </div>
       <div className="flex-1">
@@ -45,20 +45,20 @@ const Sidebar = () => (
           {navItems.map((item) => (
             <SidebarNavLink key={item.to} to={item.to}>
               {item.icon}
-              <span className="hidden md:block group-hover:block">{item.title}</span>
+              <span className="hidden group-hover:block">{item.title}</span>
             </SidebarNavLink>
           ))}
           <SidebarNavLink to="/voice-interaction">
             <Mic className="h-5 w-5" />
-            <span className="hidden md:block group-hover:block">Voice Interaction</span>
+            <span className="hidden group-hover:block">Voice Interaction</span>
           </SidebarNavLink>
           <SidebarNavLink to="/attorney-info">
             <Info className="h-5 w-5" />
-            <span className="hidden md:block group-hover:block">Attorney Info</span>
+            <span className="hidden group-hover:block">Attorney Info</span>
           </SidebarNavLink>
           <SidebarNavLink to="/helpful-tips">
             <HelpCircle className="h-5 w-5" />
-            <span className="hidden md:block group-hover:block">Helpful Tips</span>
+            <span className="hidden group-hover:block">Helpful Tips</span>
           </SidebarNavLink>
         </nav>
       </div>
