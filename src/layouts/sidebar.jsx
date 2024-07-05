@@ -9,13 +9,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, FileText } from "lucide-react";
+import { CircleUser, Menu, FileText, Mic, Info, HelpCircle } from "lucide-react"; // Import new icons
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
 const Layout = () => {
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[180px_1fr] lg:grid-cols-[240px_1fr]">
+    <div className="grid min-h-screen w-full md:grid-cols-[60px_1fr] lg:grid-cols-[60px_1fr]">
       <Sidebar />
       <div className="flex flex-col">
         <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
@@ -32,12 +32,12 @@ const Layout = () => {
 };
 
 const Sidebar = () => (
-  <div className="hidden border-r bg-muted/40 md:block md:w-[160px] lg:w-[200px]">
+  <div className="hidden border-r bg-muted/40 md:block md:w-[60px] lg:w-[60px] hover:md:w-[180px] hover:lg:w-[240px] transition-all duration-300">
     <div className="flex h-full max-h-screen flex-col gap-2">
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
           <FileText className="h-6 w-6" />
-          <span>ReportGen</span>
+          <span className="hidden md:block">ReportGen</span>
         </NavLink>
       </div>
       <div className="flex-1">
@@ -45,9 +45,21 @@ const Sidebar = () => (
           {navItems.map((item) => (
             <SidebarNavLink key={item.to} to={item.to}>
               {item.icon}
-              {item.title}
+              <span className="hidden md:block">{item.title}</span>
             </SidebarNavLink>
           ))}
+          <SidebarNavLink to="/voice-interaction">
+            <Mic className="h-5 w-5" />
+            <span className="hidden md:block">Voice Interaction</span>
+          </SidebarNavLink>
+          <SidebarNavLink to="/attorney-info">
+            <Info className="h-5 w-5" />
+            <span className="hidden md:block">Attorney Info</span>
+          </SidebarNavLink>
+          <SidebarNavLink to="/helpful-tips">
+            <HelpCircle className="h-5 w-5" />
+            <span className="hidden md:block">Helpful Tips</span>
+          </SidebarNavLink>
         </nav>
       </div>
     </div>
@@ -76,6 +88,15 @@ const MobileSidebar = () => (
             {item.title}
           </SidebarNavLink>
         ))}
+        <SidebarNavLink to="/voice-interaction">
+          Voice Interaction
+        </SidebarNavLink>
+        <SidebarNavLink to="/attorney-info">
+          Attorney Info
+        </SidebarNavLink>
+        <SidebarNavLink to="/helpful-tips">
+          Helpful Tips
+        </SidebarNavLink>
       </nav>
     </SheetContent>
   </Sheet>
