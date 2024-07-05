@@ -30,11 +30,18 @@ const Index = () => {
     event.preventDefault();
     const uploadedFile = event.dataTransfer.files[0];
     setFile(uploadedFile);
+    displayDocument(uploadedFile);
   };
 
   const handleFileChange = (event) => {
     const uploadedFile = event.target.files[0];
     setFile(uploadedFile);
+    displayDocument(uploadedFile);
+  };
+
+  const displayDocument = (file) => {
+    const docFrame = document.getElementById("docFrame");
+    docFrame.src = URL.createObjectURL(file);
   };
 
   const handleAnalyze = () => {
