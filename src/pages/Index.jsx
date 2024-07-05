@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,13 @@ import { Rocket } from "lucide-react";
 
 const Index = () => {
   const [hasAttorney, setHasAttorney] = useState("no");
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Simulate navigation to the main/home page
+    navigate("/home");
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
@@ -16,7 +24,7 @@ const Index = () => {
           <CardTitle>Login / Signup</CardTitle>
         </CardHeader>
         <CardContent>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <Label htmlFor="first-name">First Name</Label>
               <Input id="first-name" placeholder="First Name" />
