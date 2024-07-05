@@ -2,12 +2,15 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { UserPlus, HelpCircle, Edit, Download, Share } from "lucide-react"; // Import icons
+import { UserPlus, HelpCircle, Edit, Download, Share, Loader2 } from "lucide-react"; // Import icons
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"; // Import Tooltip components
 
 const Index = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+
+  const [file, setFile] = useState(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const handleSendMessage = () => {
     if (input.trim()) {
@@ -22,41 +25,76 @@ const Index = () => {
     }
   };
 
+  const handleFileDrop = (event) => {
+    event.preventDefault();
+    const uploadedFile = event.dataTransfer.files[0];
+    setFile(uploadedFile);
+  };
+
+  const handleAnalyze = () => {
+    setIsAnalyzing(true);
+    setTimeout(() => {
+      setIsAnalyzing(false);
+      // Display the document in the frame (simulated)
+      const docFrame = document.getElementById("docFrame");
+      docFrame.src = URL.createObjectURL(file);
+    }, 2000);
+  };
+
   return (
     <TooltipProvider>
       <div className="flex flex-col md:flex-row gap-4 h-[80vh] md:gap-8">
         <div className="flex-[2] h-full">
-          <iframe
-            src="https://example.com/report"
-            className="w-full h-full border rounded-md"
-            title="New Client Report"
-          ></iframe>
-          <div className="flex justify-center gap-4 mt-4">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Edit className="h-5 w-5" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>Edit Report</TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Download className="h-5 w-5" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>Download Report</TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Share className="h-5 w-5" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>Share Report</TooltipContent>
-            </Tooltip>
-          </div>
+          {!file ? (
+            <div
+              onDrop={handleFileDrop}
+              onDragOver={(e) => e.preventDefault()}
+              className="w-full h-full border-dashed border-2 border-gray-300 rounded-md flex items-center justify-center"
+            >
+              <p>Drag and drop a PDF/DOCX file here</p>
+            </div>
+          ) : (
+            <div className="w-full h-full border rounded-md relative">
+              <iframe
+                id="docFrame"
+                className="w-full h-full"
+                title="Uploaded Document"
+              ></iframe>
+              <div className="absolute top-2 right-2 flex gap-2">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="outline" size="icon">
+                      <Edit className="h-5 w-5" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Edit Report</TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="outline" size="icon">
+                      <Download className="h-5 w-5" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Download Report</TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="outline" size="icon">
+                      <Share className="h-5 w-5" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Share Report</TooltipContent>
+                </Tooltip>
+              </div>
+            </div>
+          )}
+          {file && (
+            <div className="flex justify-center gap-4 mt-4">
+              <Button onClick={handleAnalyze} disabled={isAnalyzing}>
+                {isAnalyzing ? <Loader2 className="animate-spin h-5 w-5" /> : "Analyze"}
+              </Button>
+            </div>
+          )}
         </div>
         <div className="flex-[1] h-full">
           <Card className="h-full flex flex-col">
