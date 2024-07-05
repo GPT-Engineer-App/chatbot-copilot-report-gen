@@ -26,6 +26,10 @@ const Index = () => {
               <Input id="last-name" placeholder="Last Name" />
             </div>
             <div>
+              <Label htmlFor="email">Email Address</Label>
+              <Input id="email" placeholder="Email Address" />
+            </div>
+            <div>
               <Label>Do you have an attorney?</Label>
               <RadioGroup
                 defaultValue="no"
