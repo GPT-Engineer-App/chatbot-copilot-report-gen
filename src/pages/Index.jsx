@@ -13,7 +13,7 @@ const Index = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Navigate to the home page
+    // Simulate navigation to the main/home page
     navigate("/home");
   };
 
