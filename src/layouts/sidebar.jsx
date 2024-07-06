@@ -15,7 +15,7 @@ import { navItems } from "../App";
 
 const Layout = () => {
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+    <div className="grid min-h-screen w-full md:grid-cols-[180px_1fr] lg:grid-cols-[240px_1fr]">
       <Sidebar />
       <div className="flex flex-col">
         <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
@@ -32,7 +32,7 @@ const Layout = () => {
 };
 
 const Sidebar = () => (
-  <div className="hidden border-r bg-muted/40 md:block">
+  <div className="hidden border-r bg-muted/40 md:block md:w-[160px] lg:w-[200px]">
     <div className="flex h-full max-h-screen flex-col gap-2">
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
