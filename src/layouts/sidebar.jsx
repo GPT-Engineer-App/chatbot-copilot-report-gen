@@ -32,11 +32,12 @@ const Layout = () => {
 };
 
 const Sidebar = () => (
-  <div className="hidden border-r bg-muted/40 md:block md:w-[60px] lg:w-[60px] fixed">
+  <div className="hidden border-r bg-muted/40 md:block md:w-[60px] lg:w-[60px] transition-all duration-300 group">
     <div className="flex h-full max-h-screen flex-col gap-2">
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
           <strong className="h-6 w-6">B</strong>
+          <span className="hidden group-hover:block transition-opacity duration-300">Banksz</span>
         </NavLink>
       </div>
       <div className="flex-1">
@@ -44,16 +45,20 @@ const Sidebar = () => (
           {navItems.map((item) => (
             <SidebarNavLink key={item.to} to={item.to}>
               {item.icon}
+              <span className="hidden group-hover:block transition-opacity duration-300 group-hover:block">{item.title}</span>
             </SidebarNavLink>
           ))}
           <SidebarNavLink to="/voice-interaction">
             <Mic className="h-5 w-5" />
+            <span className="hidden group-hover:block transition-opacity duration-300 group-hover:block">Voice Interaction</span>
           </SidebarNavLink>
           <SidebarNavLink to="/attorney-info">
             <Info className="h-5 w-5" />
+            <span className="hidden group-hover:block transition-opacity duration-300 group-hover:block">Attorney Info</span>
           </SidebarNavLink>
           <SidebarNavLink to="/helpful-tips">
             <HelpCircle className="h-5 w-5" />
+            <span className="hidden group-hover:block transition-opacity duration-300 group-hover:block">Helpful Tips</span>
           </SidebarNavLink>
         </nav>
       </div>
