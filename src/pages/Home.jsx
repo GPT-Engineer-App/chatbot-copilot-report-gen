@@ -16,6 +16,14 @@ const Home = () => {
         <CardContent>
           <p>Welcome to the Home Page!</p>
           <p>Here you can upload files and interact with the chatbot copilot.</p>
+          <div className="mt-4">
+            <Label htmlFor="file-upload">Upload File</Label>
+            <Input id="file-upload" type="file" />
+          </div>
+          <div className="mt-4">
+            <Label htmlFor="chatbot">Chatbot Copilot</Label>
+            <Input id="chatbot" placeholder="Type your message here..." />
+          </div>
         </CardContent>
       </Card>
     </div>
