@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { UserPlus, HelpCircle, Edit, Download, Share, Loader2 } from "lucide-react"; // Import icons
+import { UserPlus, HelpCircle, Edit, Download, Share, Loader2, ArrowLeft } from "lucide-react"; // Import icons
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"; // Import Tooltip components
 
 const Index = () => {
@@ -59,6 +59,10 @@ const Index = () => {
     navigate("/"); // Navigate to the home page
   };
 
+  const handleBack = () => {
+    setFile(null);
+  };
+
   return (
     <TooltipProvider>
       <div className="flex flex-col md:flex-row gap-4 h-[80vh] md:gap-8">
@@ -80,6 +84,11 @@ const Index = () => {
             </div>
           ) : (
             <div className="w-full h-full border rounded-md relative">
+              <div className="absolute top-2 left-2">
+                <Button variant="outline" size="icon" onClick={handleBack}>
+                  <ArrowLeft className="h-5 w-5" />
+                </Button>
+              </div>
               <iframe
                 id="docFrame"
                 className="w-full h-full"
