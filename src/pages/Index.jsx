@@ -99,7 +99,7 @@ const Index = () => {
         <div className="flex-[1] h-full">
           <Card className="h-full flex flex-col">
             <CardHeader>
-              <CardTitle>Chatbot Copilot</CardTitle>
+              <CardTitle>Bankruptcy Copilot</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col-reverse gap-2 overflow-auto">
               {messages.map((message, index) => (
