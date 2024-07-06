@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,12 @@ const Index = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const fileInputRef = useRef(null);
   const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    if (file) {
+      displayDocument(file);
+    }
+  }, [file]);
 
   const handleSendMessage = () => {
     if (input.trim()) {
@@ -31,18 +37,19 @@ const Index = () => {
     event.preventDefault();
     const uploadedFile = event.dataTransfer.files[0];
     setFile(uploadedFile);
-    displayDocument(uploadedFile);
   };
 
   const handleFileChange = (event) => {
     const uploadedFile = event.target.files[0];
     setFile(uploadedFile);
-    displayDocument(uploadedFile);
   };
 
   const displayDocument = (file) => {
     const docFrame = document.getElementById("docFrame");
     docFrame.src = URL.createObjectURL(file);
+    docFrame.onload = () => {
+      docFrame.contentWindow.document.body.style.zoom = "75%"; // Adjust zoom level as needed
+    };
   };
 
   const handleAnalyze = () => {
@@ -93,6 +100,7 @@ const Index = () => {
                 id="docFrame"
                 className="w-full h-full"
                 title="Uploaded Document"
+                style={{ border: "none" }}
               ></iframe>
               <div className="absolute top-2 right-2 flex gap-2">
                 <Tooltip>
