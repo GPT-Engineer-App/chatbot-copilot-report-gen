@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,10 +9,10 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 const Index = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-
   const [file, setFile] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const fileInputRef = useRef(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSendMessage = () => {
     if (input.trim()) {
@@ -52,6 +53,10 @@ const Index = () => {
       const docFrame = document.getElementById("docFrame");
       docFrame.src = URL.createObjectURL(file);
     }, 2000);
+  };
+
+  const handleGetStarted = () => {
+    navigate("/"); // Navigate to the home page
   };
 
   return (
@@ -130,7 +135,7 @@ const Index = () => {
             </CardContent>
             <div className="p-4 border-t flex flex-col gap-2">
               <div className="flex gap-2 mb-2">
-                <Button variant="outline" className="flex items-center gap-2">
+                <Button variant="outline" className="flex items-center gap-2" onClick={handleGetStarted}>
                   <UserPlus className="h-4 w-4" />
                   Start New Client Interview
                 </Button>
