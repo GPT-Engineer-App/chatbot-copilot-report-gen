@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +11,7 @@ const Index = () => {
 
   const [file, setFile] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const fileInputRef = useRef(null);
 
   const handleSendMessage = () => {
     if (input.trim()) {
@@ -29,6 +30,18 @@ const Index = () => {
     event.preventDefault();
     const uploadedFile = event.dataTransfer.files[0];
     setFile(uploadedFile);
+    displayDocument(uploadedFile);
+  };
+
+  const handleFileChange = (event) => {
+    const uploadedFile = event.target.files[0];
+    setFile(uploadedFile);
+    displayDocument(uploadedFile);
+  };
+
+  const displayDocument = (file) => {
+    const docFrame = document.getElementById("docFrame");
+    docFrame.src = URL.createObjectURL(file);
   };
 
   const handleAnalyze = () => {
@@ -49,9 +62,16 @@ const Index = () => {
             <div
               onDrop={handleFileDrop}
               onDragOver={(e) => e.preventDefault()}
-              className="w-full h-full border-dashed border-2 border-gray-300 rounded-md flex items-center justify-center"
+              onClick={() => fileInputRef.current.click()}
+              className="w-full h-full border-dashed border-2 border-gray-300 rounded-md flex items-center justify-center cursor-pointer"
             >
-              <p>Drag and drop a PDF/DOCX file here</p>
+              <p>Drag and drop a PDF/DOCX file here or click to upload</p>
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                style={{ display: "none" }}
+              />
             </div>
           ) : (
             <div className="w-full h-full border rounded-md relative">
